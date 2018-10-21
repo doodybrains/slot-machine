@@ -8,15 +8,13 @@ const ImageArrayThree = ['images/1-1.png', 'images/1-2.png', 'images/1-3.png', '
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	addHTML();
-	// serial = new p5.SerialPort();
-	// serial.on('data', serialEvent);
-	// serial.open(portName);
+	serial = new p5.SerialPort();
+	serial.on('data', serialEvent);
+	serial.open(portName);
 	createSlotSection(ImageArrayOne, '1');
 	createSlotSection(ImageArrayTwo, '2');
 	createSlotSection(ImageArrayThree, '3');
-	
-	let duration = 1;
-	startSlotMachine(duration);
+
 }
 
 function createSlotSection(array, no) {
@@ -43,7 +41,8 @@ function startSlotMachine(duration) {
 	for(var i = 1; i < 4; i++) {
 		const slotReel = document.getElementById(`slot-${i}`);
 		let randomSpinClassNo = randomize();
-
+		slotReel.style = '';
+		slotReel.className = `slot `;
 		slotReel.style.animation = `spin-${randomSpinClassNo} ${duration + i * 0.05}s`;
 		slotReel.className += ` spin-${randomSpinClassNo}`;
 
@@ -51,9 +50,6 @@ function startSlotMachine(duration) {
 	}
 	
 	const allThree = landedSlots[0] === landedSlots[1] === landedSlots[2];
-	const firstTwo = landedSlots[0] === landedSlots[1];
-	const lastTwo = landedSlots[1] === landedSlots[2];
-	const firstLastTwo = landedSlots[0] === landedSlots[2];
 
 	if ( allThree ) {
 		showWinScreen();
@@ -79,5 +75,20 @@ function addHTML() {
 
 function serialEvent() {
 	let dataValue = Number(serial.read());
+
+	const above = dataValue === 26;
 	log.innerHTML = `data values: ${dataValue}`;
+
+	if (!above) return;
+
+	if (dataValue === 26) {
+		initMachine();
+	}
+	
+}
+
+function initMachine() {
+	console.log('init');
+	startSlotMachine(2);
+	return;
 }
