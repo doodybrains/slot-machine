@@ -109,11 +109,10 @@ canvas {
   left: 0;
   width: 100%;
   z-index: 40;
-  /* animation: shake 0.15s linear 0s 4; */
 }
 
 #lever.animate {
-  animation: shake 0.15s linear 0s 4;
+  animation: shake 0.15s linear 0s 10;
 }
 
 #joint {
@@ -198,6 +197,7 @@ canvas {
 .spin-6 { transform: rotateX(-240deg); }
 .spin-7 { transform: rotateX(-280deg); }
 .spin-8 { transform: rotateX(-320deg); }
+
 @keyframes shake {
   0% {   transform: skewX(-4deg); }
   20% {   transform: skewX(-3deg); }

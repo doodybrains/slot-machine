@@ -6,6 +6,8 @@ const ImageArrayTwo = ['images/1-1.png', 'images/1-2.png', 'images/1-3.png', 'im
 const ImageArrayThree = ['images/1-1.png', 'images/1-2.png', 'images/1-3.png', 'images/2-1.png', 'images/2-2.png', 'images/2-3.png', 'images/3-1.png', 'images/3-2.png', 'images/3-3.png'];
 let numberOfTrys = [];
 let video;
+let candy = 1;
+let joystick = 1;
 
 function setup() {
 	video = createVideo('images/scary.mp4');
@@ -41,6 +43,7 @@ function createSlotSection(array, no) {
 }
 
 function startSlotMachine(duration) {
+	joystick = 3;
 	video.pause();
 	const landedSlots = [];
 	const winScreen = document.getElementById('winner');
@@ -91,7 +94,7 @@ function showScaryScreen() {
 	setTimeout(function() {
 		video.pause();
 		video.remove();
-		winScreen.innerHTML = '<p>Add another candy!</p>';
+		winScreen.innerHTML = '<p>tryyy again!!</p>';
 	}, 1800);
 
 }
@@ -108,7 +111,7 @@ function showTryAgainScreen() {
 	winScreen.style.display = 'flex';
 
 	numberOfTrys.push('tried');
-	console.log(numberOfTrys.length);
+	console.log(candy);
 }
 
 function randomize(no) {
@@ -124,24 +127,59 @@ function addHTML() {
 	log.innerHTML = `data values: `;
 }
 
-function serialEvent() {
-	let dataValue = Number(serial.read());
+function candyIn() {
+	console.log('candy in called!');
 
-	const above = dataValue === 26;
-	log.innerHTML = `data values: ${dataValue}`;
+	const winScreen = document.getElementById('winner');
+	winScreen.style.display = 'none';
+	joystick = 1;
+	candy = 3;
+
+	let lever = select('#lever');
+	lever.addClass('animate');
+	
+	setTimeout(function() {
+		candy = 1;
+		lever.removeClass('animate');
+	}, 3000);
+}
+
+function serialEvent() {
+	const dataValue = Number(serial.read());
+	console.log(dataValue);
+	if (candy === 1 && dataValue === 48) {
+		candy = 2;
+	}
+
+	if (candy === 2) {
+		candyIn(); 
+	}
+
+	if (joystick === 1 && dataValue === 70) {
+		joystick = 2;
+	}
+	
+	if (joystick === 2) {
+		startSlotMachine(1);
+	}
+
+	// let dataValue = Number(serial.read());
+
+	// const above = dataValue === 26;
+	// log.innerHTML = `data values: ${dataValue}`;
 
 	// if coinData === HIGH 
 	// shakeLever function 
 
 	// if dataValue === 26 
 
-	
-	if (!above) return;
 
-	if (dataValue === 26) {
-		initMachine();
-		return;
-	}
+	// if (!above) return;
+
+	// if (dataValue === 26) {
+	// 	initMachine();
+	// 	return;
+	// }
 }
 
 function initMachine() {
