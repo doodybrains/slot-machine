@@ -130,6 +130,12 @@ function serialEvent() {
 	const above = dataValue === 26;
 	log.innerHTML = `data values: ${dataValue}`;
 
+	// if coinData === HIGH 
+	// shakeLever function 
+
+	// if dataValue === 26 
+
+	
 	if (!above) return;
 
 	if (dataValue === 26) {

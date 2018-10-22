@@ -84,6 +84,7 @@ canvas {
   z-index: 9999999;
   position: fixed;
 }
+
 #slot-design {
   background-image: url("images/3-window.png"); 
   height: 100%;
@@ -97,6 +98,36 @@ canvas {
   z-index: 40;
 }
 
+#lever {
+  background-image: url("images/lever.png"); 
+  height: 100%;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+  /* animation: shake 0.15s linear 0s 4; */
+}
+
+#lever.animate {
+  animation: shake 0.15s linear 0s 4;
+}
+
+#joint {
+  background-image: url("images/joint.png"); 
+  height: 100%;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 40;
+}
 #wrapper {
   margin: 0 auto;
   width: 80%;
@@ -167,7 +198,14 @@ canvas {
 .spin-6 { transform: rotateX(-240deg); }
 .spin-7 { transform: rotateX(-280deg); }
 .spin-8 { transform: rotateX(-320deg); }
-
+@keyframes shake {
+  0% {   transform: skewX(-4deg); }
+  20% {   transform: skewX(-3deg); }
+  40% {   transform: skewX(2deg); }
+  60% {   transform: skewX(1deg); }
+  80% {   transform: skewX(2deg); }
+  100% {   transform: skewX(3deg); }
+}
 @keyframes spin-0 {
   0%    { transform: rotateX(20deg); }
   100%  { transform: rotateX(0deg); }
