@@ -7,7 +7,6 @@ html {
 }
 
 body {
-
   height: 100%;
   overflow: hidden;
   margin: 0;
@@ -32,7 +31,59 @@ canvas {
   z-index: 30;
 }
 
+#winner {
+  position: absolute;
+  height: 60%;
+  width: 35%;
+  border-radius: 50%;
+  left: 0;
+  top: 25%;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+  font-size: 3em;
+}
 
+#winner p {
+  color: black;
+  font-weight: bold;
+  font-size: .75em;
+  position: relative;
+  z-index: 9999;
+  margin: -30px auto 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#winner:before,
+#winner:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90%;
+  width: 90%;
+  background-color: rgb(255, 102, 0, 1);
+}
+
+#winner:before {
+  transform: rotate(30deg);
+}
+
+#winner:after {
+  transform: rotate(60deg);
+}
+
+#winner video {
+  height: 120% !important;
+  width: 120% !important;
+  z-index: 9999999;
+  position: fixed;
+}
 #slot-design {
   background-image: url("images/3-window.png"); 
   height: 100%;
