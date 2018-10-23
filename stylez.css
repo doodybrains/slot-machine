@@ -45,6 +45,7 @@ canvas {
   justify-content: center;
   z-index: 40;
   font-size: 3em;
+  display: none;
 }
 
 #winner p {
