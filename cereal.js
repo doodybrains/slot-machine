@@ -137,6 +137,13 @@ function showCandyScreen() {
 
 	serial.write('x');
 	landedSlots = [];
+
+	setTimeout(function(){ winScreen.style.display = 'none'; }, 2000)
+	empty();
+}
+
+function empty() {
+	numberOfTrys = [];
 }
 
 function showTryAgainScreen() {
@@ -160,11 +167,12 @@ function candyIn() {
 	setTimeout(function() {
 		candy = 1;
 		lever.removeClass('animate');
-	}, 3000);
+	}, 2000);
 }
 
 function serialEvent() {
 	const dataValue = Number(serial.read());
+	console.log('serial event', dataValue, candy);
 
 	if (candy === 1 && dataValue === 48) {
 		candy = 2;
