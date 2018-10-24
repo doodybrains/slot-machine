@@ -8,6 +8,7 @@ const totalArrays = 3;
 let serial;
 let log;
 let numberOfTrys = [];
+let landedSlots = [];
 let video;
 let candy = 1;
 let joystick = 1;
@@ -65,7 +66,7 @@ function createSlotSection(array, no) {
 }
 
 function startSlotMachine(duration) {
-	const landedSlots = [];
+	landedSlots = [];
 	winScreen = document.getElementById('winner');
 
 	joystick = 3;
@@ -124,6 +125,9 @@ function showScaryScreen() {
 
 		winScreen.innerHTML = '<p>put another candy in!</p>';
 	}, 1800);
+
+	landedSlots = [];
+	numberOfTrys = [];
 }
 
 function showCandyScreen() {
@@ -132,6 +136,7 @@ function showCandyScreen() {
 	winScreen.style.display = 'flex';
 
 	serial.write('x');
+	landedSlots = [];
 }
 
 function showTryAgainScreen() {
@@ -140,6 +145,7 @@ function showTryAgainScreen() {
 	winScreen.style.display = 'flex';
 
 	numberOfTrys.push('tried');
+	landedSlots = [];
 }
 
 function candyIn() {

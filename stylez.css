@@ -128,6 +128,7 @@ canvas {
   width: 100%;
   z-index: 40;
 }
+
 #wrapper {
   margin: 0 auto;
   width: 80%;
@@ -160,7 +161,7 @@ canvas {
   margin: 0 auto;
   height: 50vh;
   width: 47%;
-  left: 0;
+  left: 1.5%;
   right: 0;
   display: flex;
   align-content: center;
@@ -176,16 +177,16 @@ canvas {
 .slot-item {
   position: absolute;
   background: #fff;
-  height: 100%;
+  height: 90%;
   width: 100%;
   -webkit-backface-visibility: hidden;
 }
 
 .slot img {
-  height: 40%;
-  object-fit: cover;
+  height: 70%;
+  object-fit: contain;
   width: 100%;
-  margin: 35% auto 0 auto;
+  margin: 20% auto 0 auto;
   display: block;
 }
 
